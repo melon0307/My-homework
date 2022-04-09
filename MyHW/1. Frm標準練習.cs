@@ -288,10 +288,5 @@ namespace WindowsFormsApp1
             lblResult.Text = "int 陣列 scores { 2, 3, 46, 33, 22, 100, 150, 33, 55 } 中\r\n最大數為 : " + max.ToString() + "\r\n最小數為 : " + Min(scores).ToString();
 
         }
-
-        int MyMinScore(int[] nums)
-        {
-            return 10;
-        }
     }
 }
