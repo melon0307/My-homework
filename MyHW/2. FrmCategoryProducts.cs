@@ -32,11 +32,11 @@ namespace MyHomeWork
                 conn.Open();
                 SqlCommand command = new SqlCommand
                     ("select * " +
-                    " from Products p" +
-                    " join Categories c " + 
-                    "on p.CategoryID=c.CategoryID " +
-                    "where CategoryName='" + input + "'" + 
-                    " order by UnitPrice", conn);
+                     " from Products p" +
+                     " join Categories c " + 
+                     "on p.CategoryID=c.CategoryID " +
+                     "where CategoryName='" + input + "'" + 
+                     " order by UnitPrice", conn);
                 SqlDataReader dataReader = command.ExecuteReader();
                 listBox1.Items.Clear();
                 while (dataReader.Read())
