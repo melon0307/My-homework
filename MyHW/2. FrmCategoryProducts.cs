@@ -31,7 +31,7 @@ namespace MyHomeWork
                 conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
                 conn.Open();
                 SqlCommand command = new SqlCommand("select * " +
-                                                                                                      " from Products p" +
+                    " from Products p" +
                                                                                                       " join Categories c " +
                                                                                                       "on p.CategoryID=c.CategoryID " +
                                                                                                       "where CategoryName='" + input + "'" + 
