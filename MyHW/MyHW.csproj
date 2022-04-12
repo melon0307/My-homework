@@ -58,11 +58,22 @@
     <Compile Include="2. FrmCategoryProducts.designer.cs">
       <DependentUpon>2. FrmCategoryProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="3. FrmProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3. FrmProducts.designer.cs">
+      <DependentUpon>3. FrmProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nwDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>nwDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="2. FrmCategoryProducts.resx">
       <DependentUpon>2. FrmCategoryProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3. FrmProducts.resx">
+      <DependentUpon>3. FrmProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +95,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="nwDataSet.xsc">
+      <DependentUpon>nwDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="nwDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>nwDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="nwDataSet.xss">
+      <DependentUpon>nwDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

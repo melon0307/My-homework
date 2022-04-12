@@ -13,9 +13,11 @@ namespace MyHomeWork
 {
     public partial class FrmCategoryProducts : Form
     {
+        
         public FrmCategoryProducts()
         {
             InitializeComponent();
+            inputcbx();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,6 +58,33 @@ namespace MyHomeWork
                 {
                     conn.Close();
                 }
+            }
+
+        }
+
+        private void inputcbx()
+        {
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
+                conn.Open();
+                SqlCommand command = new SqlCommand("Select * from Categories", conn);
+                SqlDataReader dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    string s = $"{dataReader["CategoryName"]}";
+                    comboBox1.Items.Add(s);
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }

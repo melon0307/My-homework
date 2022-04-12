@@ -39,17 +39,8 @@ namespace MyHomeWork
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Beverages",
-            "Condiments",
-            "Confections",
-            "Dairy Products",
-            "Grains/Cereals",
-            "Meat/Poultry",
-            "Produce",
-            "Seafood"});
             this.comboBox1.Location = new System.Drawing.Point(130, 34);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(144, 20);
             this.comboBox1.TabIndex = 0;
@@ -61,7 +52,7 @@ namespace MyHomeWork
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 18;
             this.listBox1.Location = new System.Drawing.Point(109, 80);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(421, 184);
             this.listBox1.TabIndex = 1;
@@ -107,7 +98,7 @@ namespace MyHomeWork
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.comboBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmCategoryProducts";
             this.Text = "FrmCategoryProducts";
             this.ResumeLayout(false);
