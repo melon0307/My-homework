@@ -17,8 +17,12 @@ namespace MyHomeWork
         public FrmCategoryProducts()
         {
             InitializeComponent();
-            inputcbx();
+            inputcbx1();
+            inputcbx2();
         }
+        
+        //===============================================================
+        //      Connected
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -62,7 +66,7 @@ namespace MyHomeWork
 
         }
 
-        private void inputcbx()
+        private void inputcbx1()
         {
             SqlConnection conn = null;
             try
@@ -85,6 +89,46 @@ namespace MyHomeWork
             finally
             {
                 conn.Close();
+            }
+        }
+
+        //========================================================
+        //       DisConnected
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string input = this.comboBox2.Text;
+            // Step1: SqlConnection
+            // Step2: SqlDataAdapter
+            // Step3: DataSet            - In Memmory DB
+            // Step4: UI Control        - DataGridView  -  Table
+            SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
+            SqlDataAdapter adapter = new SqlDataAdapter(" select * " +
+                     " from Products p" +
+                     " join Categories c " +
+                     " on p.CategoryID=c.CategoryID " +
+                     " where CategoryName='" + input + "'" +
+                     " order by UnitPrice", conn);
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);
+            listBox2.Items.Clear();
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                string s = $"{row["ProductName"],-35} - {row["UnitPrice"]:c2}";
+                listBox2.Items.Add(s);
+            }
+
+        }
+
+        private void inputcbx2()
+        {
+            SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
+            SqlDataAdapter adapter = new SqlDataAdapter("select CategoryName from Categories", conn);
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);
+            foreach (DataRow row in dataSet.Tables[0].Rows)
+            {
+                comboBox2.Items.Add(row["CategoryName"]);
             }
         }
     }
