@@ -24,7 +24,7 @@ namespace MyHomeWork
         {
             try
             {
-                this.productsTableAdapter1.UnitPriceBetween(this.nwDataSet1.Products, int.Parse(textBox1.Text), int.Parse(textBox2.Text));                
+                this.productsTableAdapter1.UnitPriceBetween(this.nwDataSet1.Products, decimal.Parse(textBox1.Text), decimal.Parse(textBox2.Text));                
                 Output();
                 this.lblResult.Text = $"結果: 單價介於 {this.textBox1.Text} 元到 {this.textBox2.Text} 元, 共 {this.bindingSource1.Count} 筆";
             }
