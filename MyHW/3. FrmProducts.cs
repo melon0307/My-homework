@@ -37,10 +37,18 @@ namespace MyHomeWork
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.productsTableAdapter1.ProductName(this.nwDataSet1.Products, "%"+textBox3.Text+"%");
-            this.dataGridView1.DataSource = this.nwDataSet1.Products;
-            Output();
-            this.lblResult.Text = $"結果: 名字內有 {textBox3.Text} 的, 共 {this.bindingSource1.Count} 筆";
+            if (textBox3.Text.Trim() == "")
+            {
+                MessageBox.Show("請輸入文字");
+                return;
+            }
+            else
+            {
+                this.productsTableAdapter1.ProductName(this.nwDataSet1.Products, "%" + textBox3.Text + "%");
+                this.dataGridView1.DataSource = this.nwDataSet1.Products;
+                Output();
+                this.lblResult.Text = $"結果: 名字內有 {textBox3.Text} 的, 共 {this.bindingSource1.Count} 筆";
+            }
         }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
