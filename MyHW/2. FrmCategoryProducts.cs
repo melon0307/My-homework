@@ -117,7 +117,6 @@ namespace MyHomeWork
                 string s = $"{row["ProductName"],-35} - {row["UnitPrice"]:c2}";
                 listBox2.Items.Add(s);
             }
-
         }
 
         private void inputcbx2()
