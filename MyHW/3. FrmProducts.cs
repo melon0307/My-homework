@@ -26,6 +26,7 @@ namespace MyHomeWork
             {
                 this.productsTableAdapter1.UnitPriceBetween(this.nwDataSet1.Products, int.Parse(textBox1.Text), int.Parse(textBox2.Text));
                 this.dataGridView1.DataSource = this.nwDataSet1.Products;
+                Output();
                 this.lblResult.Text = $"結果:  {this.textBox1.Text} 元 到 {this.textBox2.Text} 元, 共 {this.bindingSource1.Count} 筆";
             }
             catch(Exception ex)
@@ -38,6 +39,7 @@ namespace MyHomeWork
         {
             this.productsTableAdapter1.ProductName(this.nwDataSet1.Products, "%"+textBox3.Text+"%");
             this.dataGridView1.DataSource = this.nwDataSet1.Products;
+            Output();
             this.lblResult.Text = $"結果: 名字內有 {textBox3.Text} 的, 共 {this.bindingSource1.Count} 筆";
         }
 
@@ -48,27 +50,22 @@ namespace MyHomeWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.bindingSource1.Position = 0;
-            Output();
+            this.bindingSource1.Position = 0;            
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            this.bindingSource1.Position -= 1;
-            Output();
+            this.bindingSource1.Position -= 1;            
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             this.bindingSource1.Position += 1;
-            Output();
-
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            this.bindingSource1.Position = this.bindingSource1.Count;
-            Output();
+            this.bindingSource1.Position = this.bindingSource1.Count;            
         }
 
         private void Output()
