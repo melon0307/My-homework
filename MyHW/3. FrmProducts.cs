@@ -22,9 +22,16 @@ namespace MyHomeWork
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.productsTableAdapter1.UnitPriceBetween(this.nwDataSet1.Products, int.Parse(textBox1.Text), int.Parse(textBox2.Text));
-            this.dataGridView1.DataSource = this.nwDataSet1.Products;
-            this.lblResult.Text = $"結果:  {this.textBox1.Text} 元 到 {this.textBox2.Text} 元, 共 {this.bindingSource1.Count}   筆";
+            try
+            {
+                this.productsTableAdapter1.UnitPriceBetween(this.nwDataSet1.Products, int.Parse(textBox1.Text), int.Parse(textBox2.Text));
+                this.dataGridView1.DataSource = this.nwDataSet1.Products;
+                this.lblResult.Text = $"結果:  {this.textBox1.Text} 元 到 {this.textBox2.Text} 元, 共 {this.bindingSource1.Count}   筆";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
