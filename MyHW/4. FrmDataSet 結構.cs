@@ -35,7 +35,7 @@ namespace MyHW
                 string s = "", st = "";
                 for (int column = 0; column < dt.Columns.Count; column++)
                 {
-                    s += $"{dt.Columns[column],-35}";
+                    s += $"{dt.Columns[column],-35}|";
                 }
                 listBox1.Items.Add(s);
 
@@ -53,7 +53,7 @@ namespace MyHW
                 {
                     for(int j =0;j < nwDataSet1.Tables[i].Columns.Count; j++)
                     {
-                        s += $"{row[j],-35}";
+                        s += $"{row[j],-35}|";
                     }
                     listBox1.Items.Add(s);
                     s = "";
