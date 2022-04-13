@@ -28,7 +28,7 @@ namespace MyHW
             this.dataGridView3.DataSource = this.nwDataSet1.Customers;
 
             this.listBox1.Items.Clear();
-            for(int i =0; i<this.nwDataSet1.Tables.Count; i++)
+            for (int i = 0; i < this.nwDataSet1.Tables.Count; i++)
             {
                 DataTable dt = this.nwDataSet1.Tables[i];
                 this.listBox1.Items.Add(dt.TableName);
@@ -39,25 +39,25 @@ namespace MyHW
                 }
                 listBox1.Items.Add(s);
 
-                //for(int row = 0; row < dt.Rows.Count; row++)
-                //{
-                //    for(int j =0; j < dt.Columns.Count; j++)
-                //    {
-                //        st += dt.Rows[row][j]+"  ";
-                //    }
-                //    listBox1.Items.Add(st);
-                //    st = "";
-                //}
-                 s = "";
-                foreach (DataRow row in nwDataSet1.Tables[i].Rows)
+                for (int row = 0; row < dt.Rows.Count; row++)
                 {
-                    for(int j =0;j < nwDataSet1.Tables[i].Columns.Count; j++)
+                    for (int j = 0; j < dt.Columns.Count; j++)
                     {
-                        s += $"{row[j],-35}|";
+                        st += $"{dt.Rows[row][j],-35}|";
                     }
-                    listBox1.Items.Add(s);
-                    s = "";
+                    listBox1.Items.Add(st);
+                    st = "";
                 }
+                //s = "";
+                //foreach (DataRow row in nwDataSet1.Tables[i].Rows)
+                //{
+                //    for (int j = 0; j < nwDataSet1.Tables[i].Columns.Count; j++)
+                //    {
+                //        s += $"{row[j],-35}|";
+                //    }
+                //    listBox1.Items.Add(s);
+                //    s = "";
+                //}
                 listBox1.Items.Add("=====================================================================" +
                     "================================================================================" +
                     "================================================================================" +
