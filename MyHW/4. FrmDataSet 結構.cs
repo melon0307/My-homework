@@ -28,6 +28,7 @@ namespace MyHW
             this.dataGridView3.DataSource = this.nwDataSet1.Customers;
 
             this.listBox1.Items.Clear();
+
             for (int i = 0; i < this.nwDataSet1.Tables.Count; i++)
             {
                 DataTable dt = this.nwDataSet1.Tables[i];
@@ -58,6 +59,7 @@ namespace MyHW
                 //    listBox1.Items.Add(s);
                 //    s = "";
                 //}
+
                 listBox1.Items.Add("=====================================================================" +
                     "================================================================================" +
                     "================================================================================" +
