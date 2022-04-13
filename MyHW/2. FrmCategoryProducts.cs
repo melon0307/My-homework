@@ -109,7 +109,7 @@ namespace MyHomeWork
                      " on p.CategoryID=c.CategoryID " +
                      " where CategoryName='" + input + "'" +
                      " order by UnitPrice", conn);
-            DataSet dataSet = new DataSet();
+            DataSet dataSet = new DataSet();            
             adapter.Fill(dataSet);
             listBox2.Items.Clear();
             foreach (DataRow row in dataSet.Tables[0].Rows)
@@ -124,6 +124,10 @@ namespace MyHomeWork
             SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=Northwind;Integrated Security=True");
             SqlDataAdapter adapter = new SqlDataAdapter("select CategoryName from Categories", conn);
             DataSet dataSet = new DataSet();
+            // DataTable dataTable = new DataTable();
+            // adapter.Fill(dataTable);
+            // comboBox1.DataSourse = dataTable;
+            // comboBox1.DisplayMember = "CategoryName";
             adapter.Fill(dataSet);
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {
