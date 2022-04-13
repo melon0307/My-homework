@@ -33,22 +33,36 @@ namespace MyHW
                 DataTable dt = this.nwDataSet1.Tables[i];
                 this.listBox1.Items.Add(dt.TableName);
                 string s = "", st = "";
-                for(int column = 0; column < dt.Columns.Count; column++)
+                for (int column = 0; column < dt.Columns.Count; column++)
                 {
-                    s +=dt.Columns[column] + "  ";
+                    s += $"{dt.Columns[column],-35}";
                 }
                 listBox1.Items.Add(s);
 
-                for(int row = 0; row < dt.Rows.Count; row++)
+                //for(int row = 0; row < dt.Rows.Count; row++)
+                //{
+                //    for(int j =0; j < dt.Columns.Count; j++)
+                //    {
+                //        st += dt.Rows[row][j]+"  ";
+                //    }
+                //    listBox1.Items.Add(st);
+                //    st = "";
+                //}
+                 s = "";
+                foreach (DataRow row in nwDataSet1.Tables[i].Rows)
                 {
-                    for(int j =0; j < dt.Columns.Count; j++)
+                    for(int j =0;j < nwDataSet1.Tables[i].Columns.Count; j++)
                     {
-                        st += dt.Rows[row][j]+"  ";
+                        s += $"{row[j],-35}";
                     }
-                    listBox1.Items.Add(st);
-                    st = "";
+                    listBox1.Items.Add(s);
+                    s = "";
                 }
-                listBox1.Items.Add("====================================================================================");
+                listBox1.Items.Add("=====================================================================" +
+                    "================================================================================" +
+                    "================================================================================" +
+                    "================================================================================" +
+                    "==============================================================");
             }
         }
 
