@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -70,6 +85,31 @@
     <Compile Include="4. FrmDataSet 結構.Designer.cs">
       <DependentUpon>4. FrmDataSet 結構.cs</DependentUpon>
     </Compile>
+    <Compile Include="5. FrmAdventureWorks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="5. FrmAdventureWorks.designer.cs">
+      <DependentUpon>5. FrmAdventureWorks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="6. FrmMyAlbum_V1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="6. FrmMyAlbum_V1.designer.cs">
+      <DependentUpon>6. FrmMyAlbum_V1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AWDataSet.cs">
+      <DependentUpon>AWDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AWDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AWDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HW6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HW6.xsd</DependentUpon>
+    </Compile>
     <Compile Include="nwDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +129,12 @@
     <EmbeddedResource Include="4. FrmDataSet 結構.resx">
       <DependentUpon>4. FrmDataSet 結構.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="5. FrmAdventureWorks.resx">
+      <DependentUpon>5. FrmAdventureWorks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="6. FrmMyAlbum_V1.resx">
+      <DependentUpon>6. FrmMyAlbum_V1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -98,6 +144,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="AWDataSet.xsc">
+      <DependentUpon>AWDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AWDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AWDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AWDataSet.xss">
+      <DependentUpon>AWDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="HW6.xsc">
+      <DependentUpon>HW6.xsd</DependentUpon>
+    </None>
+    <None Include="HW6.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HW6.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="HW6.xss">
+      <DependentUpon>HW6.xsd</DependentUpon>
+    </None>
     <None Include="nwDataSet.xsc">
       <DependentUpon>nwDataSet.xsd</DependentUpon>
     </None>
@@ -121,6 +189,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HW6.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HW6_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>HW6.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

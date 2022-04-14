@@ -127,7 +127,7 @@ namespace MyHomeWork
             // DataTable dataTable = new DataTable();
             // adapter.Fill(dataTable);
             // comboBox1.DataSourse = dataTable;
-            // comboBox1.DisplayMember = "CategoryName";
+            // comboBox1.DisplayMember = "CategoryName"
             adapter.Fill(dataSet);
             foreach (DataRow row in dataSet.Tables[0].Rows)
             {

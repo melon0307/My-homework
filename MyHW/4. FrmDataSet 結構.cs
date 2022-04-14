@@ -13,7 +13,7 @@ namespace MyHW
     public partial class FrmDataSet_結構 : Form
     {
         public FrmDataSet_結構()
-        {
+        { 
             InitializeComponent();
         }
 
