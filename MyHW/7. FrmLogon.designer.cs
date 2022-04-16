@@ -62,6 +62,7 @@ namespace MyHomeWork
             this.Cancel.Size = new System.Drawing.Size(71, 23);
             this.Cancel.TabIndex = 20;
             this.Cancel.Text = "取消(&C)";
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // OK
             // 
