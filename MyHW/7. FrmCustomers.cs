@@ -53,69 +53,57 @@ namespace MyHW
 
         private void CreateListViewColumns()
         {
-            this.listView1.View = View.Details;
-            SqlConnection conn = null;
+            this.listView1.View = View.Details;            
             try
             {
-                conn = new SqlConnection(Settings.Default.NorthwindConnectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.CommandText = "select * from Customers";
-                comm.Connection = conn;
-
-                SqlDataReader dataReader = comm.ExecuteReader();
-                DataTable dt = dataReader.GetSchemaTable();
-                for (int i = 0; i < dt.Rows.Count; i++)
+                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
                 {
-                    this.listView1.Columns.Add(dt.Rows[i][0].ToString());
+                    conn.Open();
+                    SqlCommand comm = new SqlCommand();
+                    comm.CommandText = "select * from Customers";
+                    comm.Connection = conn;
+
+                    SqlDataReader dataReader = comm.ExecuteReader();
+                    DataTable dt = dataReader.GetSchemaTable();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        this.listView1.Columns.Add(dt.Rows[i][0].ToString());
+                    }
+                    this.listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 }
-                this.listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
+            }           
         }
 
         private void LoadCountryToCombox()
-        {
-            SqlConnection conn = null;
+        {            
             try
             {
-                conn = new SqlConnection(Settings.Default.NorthwindConnectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.CommandText = "select distinct Country from Customers";
-                comm.Connection = conn;
-
-                SqlDataReader dataReader = comm.ExecuteReader();
-                comboBox1.Items.Clear();
-                comboBox1.Items.Add("All Countries");
-                while (dataReader.Read())
+                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
                 {
-                    comboBox1.Items.Add(dataReader["Country"]);
+                    conn.Open();
+                    SqlCommand comm = new SqlCommand();
+                    comm.CommandText = "select distinct Country from Customers";
+                    comm.Connection = conn;
+
+                    SqlDataReader dataReader = comm.ExecuteReader();
+                    comboBox1.Items.Clear();
+                    comboBox1.Items.Add("All Countries");
+                    while (dataReader.Read())
+                    {
+                        comboBox1.Items.Add(dataReader["Country"]);
+                    }   
+                    
+                    comboBox1.Text = "請選擇... ";
                 }
-                conn.Close();
-                comboBox1.Text = "請選擇... ";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
+            }           
         }
 
         private void CountryFlag(string CountryName, ListViewItem lvi)
@@ -209,111 +197,98 @@ namespace MyHW
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.listView1.Items.Clear();
+            this.listView1.Groups.Clear();
             if (comboBox1.Text == "All Countries")
-            {
-                SqlConnection conn = null;                
+            {                           
                 try
                 {
-                    conn = new SqlConnection(Settings.Default.NorthwindConnectionString);
-                    conn.Open();
-                    SqlCommand comm = new SqlCommand();
-                    comm.CommandText = "select * from Customers";
-                    comm.Connection = conn; 
-                    SqlDataReader dataReader = comm.ExecuteReader();                    
-
-                    this.listView1.Items.Clear();
-                    while (dataReader.Read())
+                    using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
                     {
-                        ListViewItem lvi = this.listView1.Items.Add(dataReader[0].ToString());
-                        if (lvi.Index % 2 == 0)
-                        {
-                            lvi.BackColor = Color.SandyBrown;
-                        }
-                        else
-                        {
-                            lvi.BackColor = Color.AntiqueWhite;
-                        }
+                        conn.Open();
+                        SqlCommand comm = new SqlCommand();
+                        comm.CommandText = "select * from Customers";
+                        comm.Connection = conn;
+                        SqlDataReader dataReader = comm.ExecuteReader();
 
-                        CountryFlag(dataReader["Country"].ToString(), lvi);
-
-                        for (int i = 1; i < dataReader.FieldCount; i++)
+                        this.listView1.Items.Clear();
+                        while (dataReader.Read())
                         {
-                            if (dataReader.IsDBNull(i))
+                            ListViewItem lvi = this.listView1.Items.Add(dataReader[0].ToString());
+                            if (lvi.Index % 2 == 0)
                             {
-                                lvi.SubItems.Add("N/A");
+                                lvi.BackColor = Color.SandyBrown;
                             }
                             else
                             {
-                                lvi.SubItems.Add(dataReader[i].ToString());
+                                lvi.BackColor = Color.AntiqueWhite;
                             }
-                        }                                     
-                    }
-                    conn.Close();                   
+
+                            CountryFlag(dataReader["Country"].ToString(), lvi);
+
+                            for (int i = 1; i < dataReader.FieldCount; i++)
+                            {
+                                if (dataReader.IsDBNull(i))
+                                {
+                                    lvi.SubItems.Add("N/A");
+                                }
+                                else
+                                {
+                                    lvi.SubItems.Add(dataReader[i].ToString());
+                                }
+                            }
+                        }
+                    }                  
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    if (conn != null)
-                    {
-                        conn.Close();
-                    }
-                }
+                }              
             }
             else
-            {
-                SqlConnection conn = null;
+            {                
                 try
                 {
-                    conn = new SqlConnection(Settings.Default.NorthwindConnectionString);
-                    conn.Open();
-                    SqlCommand command = new SqlCommand();
-                    command.CommandText = $"select * from Customers where Country = '{this.comboBox1.Text}' ";
-                    command.Connection = conn;
-                    SqlDataReader dataReader = command.ExecuteReader();
-
-                    this.listView1.Items.Clear();
-                    while (dataReader.Read())
+                    using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
                     {
-                        ListViewItem lvi = this.listView1.Items.Add(dataReader[0].ToString());
-                        if (lvi.Index % 2 == 0)
-                        {
-                            lvi.BackColor = Color.SandyBrown;
-                        }
-                        else
-                        {
-                            lvi.BackColor = Color.AntiqueWhite;
-                        }
+                        conn.Open();
+                        SqlCommand command = new SqlCommand();
+                        command.CommandText = $"select * from Customers where Country = '{this.comboBox1.Text}' ";
+                        command.Connection = conn;
+                        SqlDataReader dataReader = command.ExecuteReader();
 
-                        CountryFlag(dataReader["Country"].ToString(), lvi);
-
-                        for (int i = 1; i < dataReader.FieldCount; i++)
+                        this.listView1.Items.Clear();
+                        while (dataReader.Read())
                         {
-                            if (dataReader.IsDBNull(i))
+                            ListViewItem lvi = this.listView1.Items.Add(dataReader[0].ToString());
+                            if (lvi.Index % 2 == 0)
                             {
-                                lvi.SubItems.Add("N/A");
+                                lvi.BackColor = Color.SandyBrown;
                             }
                             else
                             {
-                                lvi.SubItems.Add(dataReader[i].ToString());
+                                lvi.BackColor = Color.AntiqueWhite;
+                            }
+
+                            CountryFlag(dataReader["Country"].ToString(), lvi);
+
+                            for (int i = 1; i < dataReader.FieldCount; i++)
+                            {
+                                if (dataReader.IsDBNull(i))
+                                {
+                                    lvi.SubItems.Add("N/A");
+                                }
+                                else
+                                {
+                                    lvi.SubItems.Add(dataReader[i].ToString());
+                                }
                             }
                         }
                     }
-                    conn.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    if (conn != null)
-                    {
-                        conn.Close();
-                    }
-                }
+                }               
             }
         }
 
@@ -359,63 +334,56 @@ namespace MyHW
         }
 
         private void countryToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
-            SqlConnection conn = null;
+        {           
             this.listView1.Items.Clear();
             try
             {
-                conn = new SqlConnection(Settings.Default.NorthwindConnectionString);
-                conn.Open();
-                SqlCommand comm = new SqlCommand();
-                comm.CommandText = "select * from Customers";
-                comm.Connection = conn;
-                SqlDataReader dataReader = comm.ExecuteReader();
-
-                this.listView1.Items.Clear();
-                while (dataReader.Read())
+                using (SqlConnection conn = new SqlConnection(Settings.Default.NorthwindConnectionString))
                 {
-                    
-                    ListViewItem lvi = this.listView1.Items.Add(dataReader[0].ToString());
-                    if (lvi.Index % 2 == 0)
-                    {
-                        lvi.BackColor = Color.SandyBrown;
-                    }
-                    else
-                    {
-                        lvi.BackColor = Color.AntiqueWhite;
-                    }
-                    
-                    CountryFlag(dataReader["Country"].ToString(), lvi);
-                    Groups(dataReader["Country"].ToString(), lvi);
+                    conn.Open();
+                    SqlCommand comm = new SqlCommand();
+                    comm.CommandText = "select * from Customers";
+                    comm.Connection = conn;
+                    SqlDataReader dataReader = comm.ExecuteReader();
 
-                    int count = listView1.Groups[dataReader["Country"].ToString()].Items.Count;
-                    this.listView1.Groups[dataReader["Country"].ToString()].Header = $"{dataReader["Country"]} ({count})";
-
-                    for (int i = 1; i < dataReader.FieldCount; i++)
+                    this.listView1.Items.Clear();
+                    while (dataReader.Read())
                     {
-                        if (dataReader.IsDBNull(i))
+
+                        ListViewItem lvi = this.listView1.Items.Add(dataReader[0].ToString());
+                        if (lvi.Index % 2 == 0)
                         {
-                            lvi.SubItems.Add("N/A");
+                            lvi.BackColor = Color.SandyBrown;
                         }
                         else
                         {
-                            lvi.SubItems.Add(dataReader[i].ToString());
+                            lvi.BackColor = Color.AntiqueWhite;
+                        }
+
+                        CountryFlag(dataReader["Country"].ToString(), lvi);
+                        Groups(dataReader["Country"].ToString(), lvi);
+
+                        int count = listView1.Groups[dataReader["Country"].ToString()].Items.Count;
+                        this.listView1.Groups[dataReader["Country"].ToString()].Header = $"{dataReader["Country"]} ({count})";
+
+                        for (int i = 1; i < dataReader.FieldCount; i++)
+                        {
+                            if (dataReader.IsDBNull(i))
+                            {
+                                lvi.SubItems.Add("N/A");
+                            }
+                            else
+                            {
+                                lvi.SubItems.Add(dataReader[i].ToString());
+                            }
                         }
                     }
                 }
-                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
+            }          
         }
     }
 }                               
