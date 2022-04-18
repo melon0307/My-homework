@@ -106,6 +106,7 @@ namespace MyHW
                         pic.Height = 200;
                         pic.Tag = i;
                         pic.BorderStyle = BorderStyle.FixedSingle;
+                        pic.Click += Pic_Click;
                         flowLayoutPanel3.Controls.Add(pic);
 
                         MemoryStream ms = new MemoryStream();
@@ -121,6 +122,16 @@ namespace MyHW
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Pic_Click(object sender, EventArgs e)
+        {
+            Form f = new Form();
+            f.BackgroundImage = ((PictureBox)sender).Image;
+            f.BackgroundImageLayout = ImageLayout.Stretch;
+            f.Width = 600;
+            f.Height = 400;
+            f.Show();
         }
 
         private void FlowLayoutPanel3_DragEnter(object sender, DragEventArgs e)
@@ -152,6 +163,7 @@ namespace MyHW
                         pic.Width = 300;
                         pic.Height = 200;
                         pic.BorderStyle = BorderStyle.FixedSingle;
+                        pic.Click += Pic_Click;
                         flowLayoutPanel1.Controls.Add(pic);
                     }
                 }
@@ -187,6 +199,7 @@ namespace MyHW
                         pic.Width = 300;
                         pic.Height = 200;
                         pic.BorderStyle = BorderStyle.FixedSingle;
+                        pic.Click += Pic_Click;
                         flowLayoutPanel3.Controls.Add(pic);
 
                         MemoryStream ms = new MemoryStream();
