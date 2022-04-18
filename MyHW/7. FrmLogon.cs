@@ -77,8 +77,7 @@ namespace MyHomeWork
                 conn.Open();
                 SqlDataReader dataReader = comm.ExecuteReader();
                 if (dataReader.HasRows)
-                {
-                    MessageBox.Show("登入成功");
+                {                    
                     FrmCustomers frmCustomers = new FrmCustomers();
                     frmCustomers.Show();
                 }
@@ -108,6 +107,14 @@ namespace MyHomeWork
         private void Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmLogon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                OK.PerformClick();
+            }
         }
     }
 }

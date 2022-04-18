@@ -349,7 +349,6 @@ namespace MyHW
                     this.listView1.Items.Clear();
                     while (dataReader.Read())
                     {
-
                         ListViewItem lvi = this.listView1.Items.Add(dataReader[0].ToString());
                         if (lvi.Index % 2 == 0)
                         {
@@ -363,9 +362,6 @@ namespace MyHW
                         CountryFlag(dataReader["Country"].ToString(), lvi);
                         Groups(dataReader["Country"].ToString(), lvi);
 
-                        int count = listView1.Groups[dataReader["Country"].ToString()].Items.Count;
-                        this.listView1.Groups[dataReader["Country"].ToString()].Header = $"{dataReader["Country"]} ({count})";
-
                         for (int i = 1; i < dataReader.FieldCount; i++)
                         {
                             if (dataReader.IsDBNull(i))
@@ -377,6 +373,10 @@ namespace MyHW
                                 lvi.SubItems.Add(dataReader[i].ToString());
                             }
                         }
+                    }
+                    for(int i = 0; i < this.listView1.Groups.Count; i++)
+                    {
+                        this.listView1.Groups[i].Header = $"{this.listView1.Groups[i].Name}({this.listView1.Groups[i].Items.Count})";
                     }
                 }
             }
