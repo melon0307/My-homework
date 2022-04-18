@@ -91,8 +91,7 @@ namespace MyHW
                 {
                     SqlCommand comm = new SqlCommand();
                     comm.CommandText = "Insert into Photo(CityID,Photo) values(@CityID,@Photo)";
-                    comm.Connection = conn;
-                    
+                    comm.Connection = conn;                    
                     conn.Open();
 
                     string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
@@ -139,8 +138,6 @@ namespace MyHW
             e.Effect = DragDropEffects.Copy;
         }
 
-
-
         private void Lab_Click(object sender, EventArgs e)
         {
             try
@@ -152,6 +149,7 @@ namespace MyHW
                     comm.CommandText = $"select * from Photo where CityID = {((LinkLabel)sender).Tag}";
                     comm.Connection = conn;
                     conn.Open();
+
                     SqlDataReader dataReader = comm.ExecuteReader();
                     while (dataReader.Read())
                     {
