@@ -68,7 +68,7 @@ namespace MyHW
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(835, 315);
+            this.tabPage3.Size = new System.Drawing.Size(933, 338);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Tool";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -112,6 +112,7 @@ namespace MyHW
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(92, 20);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.Text = "請選擇...";
             // 
             // label2
             // 
@@ -153,7 +154,7 @@ namespace MyHW
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(716, 332);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(717, 332);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel2
@@ -163,7 +164,7 @@ namespace MyHW
             this.flowLayoutPanel2.Font = new System.Drawing.Font("Consolas", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(205, 332);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(204, 332);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // splitContainer2
@@ -181,7 +182,7 @@ namespace MyHW
             // 
             this.splitContainer2.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer2.Size = new System.Drawing.Size(929, 334);
-            this.splitContainer2.SplitterDistance = 207;
+            this.splitContainer2.SplitterDistance = 206;
             this.splitContainer2.TabIndex = 0;
             // 
             // tabPage1

@@ -77,9 +77,15 @@ namespace MyHomeWork
                 conn.Open();
                 SqlDataReader dataReader = comm.ExecuteReader();
                 if (dataReader.HasRows)
-                {                    
-                    FrmCustomers frmCustomers = new FrmCustomers();
-                    frmCustomers.Show();
+                {
+                    MessageBox.Show("登入成功");
+                    FrmHomePage f = new FrmHomePage();
+                    f.Owner = this;
+                    this.Hide();
+                    f.ShowDialog();
+                    Application.ExitThread();
+                                      
+                    
                 }
                 else
                 {

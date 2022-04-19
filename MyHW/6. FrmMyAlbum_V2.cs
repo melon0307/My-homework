@@ -85,42 +85,50 @@ namespace MyHW
 
         private void FlowLayoutPanel3_DragDrop(object sender, DragEventArgs e)
         {
-            try
+            if(comboBox1.Text == "請選擇...")
             {
-                using (SqlConnection conn = new SqlConnection(Settings.Default.HW6ConnectionString))
+                MessageBox.Show("請選擇要加入圖片的城市。");
+                return;
+            }
+            else
+            {
+                try
                 {
-                    SqlCommand comm = new SqlCommand();
-                    comm.CommandText = "Insert into Photo(CityID,Photo) values(@CityID,@Photo)";
-                    comm.Connection = conn;                    
-                    conn.Open();
-
-                    string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
-                    for (int i = 0; i < file.Length; i++)
+                    using (SqlConnection conn = new SqlConnection(Settings.Default.HW6ConnectionString))
                     {
-                        comm.Parameters.Clear();
-                        PictureBox pic = new PictureBox();
-                        pic.Image = Image.FromFile(file[i]);
-                        pic.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pic.Width = 300;
-                        pic.Height = 200;
-                        pic.Tag = i;
-                        pic.BorderStyle = BorderStyle.FixedSingle;
-                        pic.Click += Pic_Click;
-                        flowLayoutPanel3.Controls.Add(pic);
+                        SqlCommand comm = new SqlCommand();
+                        comm.CommandText = "Insert into Photo(CityID,Photo) values(@CityID,@Photo)";
+                        comm.Connection = conn;
+                        conn.Open();
 
-                        MemoryStream ms = new MemoryStream();
-                        pic.Image.Save(ms, ImageFormat.Jpeg);
-                        byte[] bytes = ms.GetBuffer();
-                        comm.Parameters.Add("@CityID", SqlDbType.Int).Value = this.comboBox1.SelectedIndex;
-                        comm.Parameters.Add("@Photo", SqlDbType.Image).Value = bytes;
-                        comm.ExecuteNonQuery();
+                        string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
+                        for (int i = 0; i < file.Length; i++)
+                        {
+                            comm.Parameters.Clear();
+                            PictureBox pic = new PictureBox();
+                            pic.Image = Image.FromFile(file[i]);
+                            pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                            pic.Width = 300;
+                            pic.Height = 200;
+                            pic.Tag = i;
+                            pic.BorderStyle = BorderStyle.FixedSingle;
+                            pic.Click += Pic_Click;
+                            flowLayoutPanel3.Controls.Add(pic);
+
+                            MemoryStream ms = new MemoryStream();
+                            pic.Image.Save(ms, ImageFormat.Jpeg);
+                            byte[] bytes = ms.GetBuffer();
+                            comm.Parameters.Add("@CityID", SqlDbType.Int).Value = this.comboBox1.SelectedIndex;
+                            comm.Parameters.Add("@Photo", SqlDbType.Image).Value = bytes;
+                            comm.ExecuteNonQuery();
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }            
         }
 
         private void Pic_Click(object sender, EventArgs e)

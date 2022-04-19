@@ -117,17 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="50643348757_866f7c5e91_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\50643348757_866f7c5e91_c.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="51781659012_47682f32f5_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\51781659012_47682f32f5_c.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="50944917162_1305d2f85e_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\50944917162_1305d2f85e_c.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="49355924151_a61f3f4968_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\49355924151_a61f3f4968_c.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

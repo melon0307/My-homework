@@ -119,6 +119,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AWDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmHomePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHomePage.Designer.cs">
+      <DependentUpon>FrmHomePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="HW6.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -155,6 +161,9 @@
     <EmbeddedResource Include="7. FrmLogon.resx">
       <DependentUpon>7. FrmLogon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmHomePage.resx">
+      <DependentUpon>FrmHomePage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -163,6 +172,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="AWDataSet.xsc">
       <DependentUpon>AWDataSet.xsd</DependentUpon>
@@ -230,6 +240,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>HW6.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\49355924151_a61f3f4968_c.jpg" />
+    <None Include="Resources\50643348757_866f7c5e91_c.jpg" />
+    <None Include="Resources\50944917162_1305d2f85e_c.jpg" />
+    <None Include="Resources\51781659012_47682f32f5_c.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
