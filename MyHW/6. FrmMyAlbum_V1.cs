@@ -25,6 +25,7 @@ namespace MyHW
                 lab.Top = 100+(80 * i);
                 lab.Left = 10;
                 lab.Tag = i;
+
                 lab.Click += Lab_Click;
                 this.splitContainer2.Panel1.Controls.Add(lab);
             }
