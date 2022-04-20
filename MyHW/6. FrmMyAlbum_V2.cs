@@ -237,7 +237,6 @@ namespace MyHW
             this.photoTableAdapter.Fill(this.hW6DataSet.Photo);
             // TODO: 這行程式碼會將資料載入 'hW6DataSet.City' 資料表。您可以視需要進行移動或移除。
             this.cityTableAdapter.Fill(this.hW6DataSet.City);
-
         }
 
         private void button2_Click(object sender, EventArgs e)
