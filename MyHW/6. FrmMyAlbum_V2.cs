@@ -73,7 +73,6 @@ namespace MyHW
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void FlowLayOutPanel3()
