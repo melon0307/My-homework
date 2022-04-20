@@ -147,15 +147,16 @@ namespace MyHW
             // countryToolStripMenuItem
             // 
             this.countryToolStripMenuItem.Name = "countryToolStripMenuItem";
-            this.countryToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.countryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.countryToolStripMenuItem.Text = "Country";
             this.countryToolStripMenuItem.Click += new System.EventHandler(this.countryToolStripMenuItem_Click);
             // 
             // 無ToolStripMenuItem
             // 
             this.無ToolStripMenuItem.Name = "無ToolStripMenuItem";
-            this.無ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.無ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.無ToolStripMenuItem.Text = "無";
+            this.無ToolStripMenuItem.Click += new System.EventHandler(this.無ToolStripMenuItem_Click);
             // 
             // ImageList2
             // 
