@@ -223,5 +223,38 @@ namespace MyHW
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void cityBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.cityBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.hW6DataSet);
+
+        }
+
+        private void FrmMyAlbum_V1_Load(object sender, EventArgs e)
+        {
+            // TODO: 這行程式碼會將資料載入 'hW6DataSet.Photo' 資料表。您可以視需要進行移動或移除。
+            this.photoTableAdapter.Fill(this.hW6DataSet.Photo);
+            // TODO: 這行程式碼會將資料載入 'hW6DataSet.City' 資料表。您可以視需要進行移動或移除。
+            this.cityTableAdapter.Fill(this.hW6DataSet.City);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.openFileDialog1.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                this.photoPictureBox.Image = Image.FromFile(this.openFileDialog1.FileName);
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.cityBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.hW6DataSet);
+        }
     }
 }

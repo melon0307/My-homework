@@ -130,6 +130,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HW6.xsd</DependentUpon>
     </Compile>
+    <Compile Include="HW6DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HW6DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="nwDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,6 +200,17 @@
     </None>
     <None Include="HW6.xss">
       <DependentUpon>HW6.xsd</DependentUpon>
+    </None>
+    <None Include="HW6DataSet.xsc">
+      <DependentUpon>HW6DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="HW6DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HW6DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HW6DataSet.xss">
+      <DependentUpon>HW6DataSet.xsd</DependentUpon>
     </None>
     <None Include="nwDataSet.xsc">
       <DependentUpon>nwDataSet.xsd</DependentUpon>
