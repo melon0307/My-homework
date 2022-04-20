@@ -209,6 +209,7 @@ namespace MyHW
             // 
             // hW6DataSet
             // 
+
             this.hW6DataSet.DataSetName = "HW6DataSet";
             this.hW6DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
