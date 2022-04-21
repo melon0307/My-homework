@@ -197,48 +197,56 @@ namespace MyHW
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
+            if (comboBox1.Text == "請選擇...")
             {
-                using (SqlConnection conn = new SqlConnection(Settings.Default.HW6ConnectionString))
+                MessageBox.Show("請選擇要加入圖片的城市。");
+                return;
+            }
+            else
+            {
+                try
                 {
-                    SqlCommand comm = new SqlCommand();
-                    comm.CommandText = "Insert into Photo(CityID,Photo) values(@CityID,@Photo)";
-                    comm.Connection = conn;
-                    conn.Open();
-                    
-                    List<string> filteredFiles;
-                    FolderBrowserDialog FolderBrowser = new FolderBrowserDialog();
-
-                    DialogResult result = FolderBrowser.ShowDialog();
-                    filteredFiles = Directory.GetFiles(FolderBrowser.SelectedPath, "*.*").Where(file => file.ToLower().EndsWith("jpg")).ToList();
-                    for (int i = 0; i < filteredFiles.Count; i++)
+                    using (SqlConnection conn = new SqlConnection(Settings.Default.HW6ConnectionString))
                     {
-                        comm.Parameters.Clear();
-                        PictureBox pic = new PictureBox();
-                        pic.Image = Image.FromFile(filteredFiles[i]);
-                        pic.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pic.Width = 300;
-                        pic.Height = 200;
-                        pic.BorderStyle = BorderStyle.FixedSingle;
-                        pic.Click += Pic_Click;
-                        pic.MouseEnter += Pic_MouseEnter;
-                        pic.MouseLeave += Pic_MouseLeave;
-                        pic.Padding = new Padding(5, 5, 5, 5);
-                        flowLayoutPanel3.Controls.Add(pic);
+                        SqlCommand comm = new SqlCommand();
+                        comm.CommandText = "Insert into Photo(CityID,Photo) values(@CityID,@Photo)";
+                        comm.Connection = conn;
+                        conn.Open();
 
-                        MemoryStream ms = new MemoryStream();
-                        pic.Image.Save(ms, ImageFormat.Jpeg);
-                        byte[] bytes = ms.GetBuffer();
-                        comm.Parameters.Add("@CityID", SqlDbType.Int).Value = this.comboBox1.SelectedIndex;
-                        comm.Parameters.Add("@Photo", SqlDbType.Image).Value = bytes;
+                        List<string> filteredFiles;
+                        FolderBrowserDialog FolderBrowser = new FolderBrowserDialog();
 
-                        comm.ExecuteNonQuery();
+                        DialogResult result = FolderBrowser.ShowDialog();
+                        filteredFiles = Directory.GetFiles(FolderBrowser.SelectedPath, "*.*").Where(file => file.ToLower().EndsWith("jpg")).ToList();
+                        for (int i = 0; i < filteredFiles.Count; i++)
+                        {
+                            comm.Parameters.Clear();
+                            PictureBox pic = new PictureBox();
+                            pic.Image = Image.FromFile(filteredFiles[i]);
+                            pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                            pic.Width = 300;
+                            pic.Height = 200;
+                            pic.BorderStyle = BorderStyle.FixedSingle;
+                            pic.Click += Pic_Click;
+                            pic.MouseEnter += Pic_MouseEnter;
+                            pic.MouseLeave += Pic_MouseLeave;
+                            pic.Padding = new Padding(5, 5, 5, 5);
+                            flowLayoutPanel3.Controls.Add(pic);
+
+                            MemoryStream ms = new MemoryStream();
+                            pic.Image.Save(ms, ImageFormat.Jpeg);
+                            byte[] bytes = ms.GetBuffer();
+                            comm.Parameters.Add("@CityID", SqlDbType.Int).Value = this.comboBox1.SelectedIndex;
+                            comm.Parameters.Add("@Photo", SqlDbType.Image).Value = bytes;
+
+                            comm.ExecuteNonQuery();
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -272,6 +280,44 @@ namespace MyHW
             this.Validate();
             this.cityBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.hW6DataSet);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.flowLayoutPanel3.Controls.Clear();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.HW6ConnectionString))
+                {
+                    flowLayoutPanel1.Controls.Clear();
+                    SqlCommand comm = new SqlCommand();
+                    comm.CommandText = $"select * from Photo where CityID = {comboBox1.SelectedIndex}";
+                    comm.Connection = conn;
+                    conn.Open();
+
+                    SqlDataReader dataReader = comm.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        byte[] bytes = (byte[])dataReader["Photo"];
+                        MemoryStream ms = new MemoryStream(bytes);
+                        PictureBox pic = new PictureBox();
+                        pic.Image = Image.FromStream(ms);
+                        pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pic.Width = 300;
+                        pic.Height = 200;
+                        pic.BorderStyle = BorderStyle.FixedSingle;
+                        pic.Click += Pic_Click;
+                        pic.MouseEnter += Pic_MouseEnter;
+                        pic.MouseLeave += Pic_MouseLeave;
+                        pic.Padding = new Padding(5, 5, 5, 5);
+                        flowLayoutPanel3.Controls.Add(pic);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
