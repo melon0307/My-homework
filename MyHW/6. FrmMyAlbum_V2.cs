@@ -112,6 +112,9 @@ namespace MyHW
                             pic.Tag = i;
                             pic.BorderStyle = BorderStyle.FixedSingle;
                             pic.Click += Pic_Click;
+                            pic.MouseEnter += Pic_MouseEnter;
+                            pic.MouseLeave += Pic_MouseLeave;
+                            pic.Padding = new Padding(5, 5, 5, 5);
                             flowLayoutPanel3.Controls.Add(pic);
 
                             MemoryStream ms = new MemoryStream();
@@ -128,6 +131,16 @@ namespace MyHW
                     MessageBox.Show(ex.Message);
                 }
             }            
+        }
+
+        private void Pic_MouseLeave(object sender, EventArgs e)
+        {
+            ((PictureBox)sender).BackColor = Color.Transparent;
+        }
+
+        private void Pic_MouseEnter(object sender, EventArgs e)
+        {
+            ((PictureBox)sender).BackColor = Color.Red;
         }
 
         private void Pic_Click(object sender, EventArgs e)
@@ -169,6 +182,9 @@ namespace MyHW
                         pic.Height = 200;
                         pic.BorderStyle = BorderStyle.FixedSingle;
                         pic.Click += Pic_Click;
+                        pic.MouseEnter += Pic_MouseEnter;
+                        pic.MouseLeave += Pic_MouseLeave;
+                        pic.Padding = new Padding(5, 5, 5, 5);
                         flowLayoutPanel1.Controls.Add(pic);
                     }
                 }
@@ -205,6 +221,9 @@ namespace MyHW
                         pic.Height = 200;
                         pic.BorderStyle = BorderStyle.FixedSingle;
                         pic.Click += Pic_Click;
+                        pic.MouseEnter += Pic_MouseEnter;
+                        pic.MouseLeave += Pic_MouseLeave;
+                        pic.Padding = new Padding(5, 5, 5, 5);
                         flowLayoutPanel3.Controls.Add(pic);
 
                         MemoryStream ms = new MemoryStream();
