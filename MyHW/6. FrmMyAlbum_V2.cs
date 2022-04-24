@@ -35,7 +35,8 @@ namespace MyHW
                     comm.Connection = conn;
                     conn.Open();
                     SqlDataReader dataReader = comm.ExecuteReader();
-                    for (int i =0; dataReader.Read();i++)
+                    flowLayoutPanel2.Controls.Clear();
+                    for (int i = 0; dataReader.Read(); i++)
                     {
                         LinkLabel lab = new LinkLabel();
                         lab.Text = $"{dataReader["CityName"]}";
@@ -84,7 +85,7 @@ namespace MyHW
 
         private void FlowLayoutPanel3_DragDrop(object sender, DragEventArgs e)
         {
-            if(comboBox1.Text == "請選擇...")
+            if (comboBox1.Text == "請選擇...")
             {
                 MessageBox.Show("請選擇要加入圖片的城市。");
                 return;
@@ -109,7 +110,7 @@ namespace MyHW
                             pic.SizeMode = PictureBoxSizeMode.StretchImage;
                             pic.Width = 300;
                             pic.Height = 200;
-                            pic.Tag = i;
+                            pic.Tag = i + 1;
                             pic.BorderStyle = BorderStyle.FixedSingle;
                             pic.Click += Pic_Click;
                             pic.MouseEnter += Pic_MouseEnter;
@@ -120,17 +121,20 @@ namespace MyHW
                             MemoryStream ms = new MemoryStream();
                             pic.Image.Save(ms, ImageFormat.Jpeg);
                             byte[] bytes = ms.GetBuffer();
-                            comm.Parameters.Add("@CityID", SqlDbType.Int).Value = this.comboBox1.SelectedIndex;
+                            comm.Parameters.Add("@CityID", SqlDbType.Int).Value = returnCityID(this.comboBox1.Text);
                             comm.Parameters.Add("@Photo", SqlDbType.Image).Value = bytes;
                             comm.ExecuteNonQuery();
                         }
                     }
+
+                    this.photoTableAdapter.Update(this.homework6DataSet);
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }            
+            }
         }
 
         private void Pic_MouseLeave(object sender, EventArgs e)
@@ -166,7 +170,8 @@ namespace MyHW
                 {
                     flowLayoutPanel1.Controls.Clear();
                     SqlCommand comm = new SqlCommand();
-                    comm.CommandText = $"select * from Photo where CityID = {((LinkLabel)sender).Tag}";
+                    string CityName = ((LinkLabel)sender).Text;
+                    comm.CommandText = $"select * from Photo where CityID = {returnCityID(CityName)}";
                     comm.Connection = conn;
                     conn.Open();
 
@@ -236,12 +241,15 @@ namespace MyHW
                             MemoryStream ms = new MemoryStream();
                             pic.Image.Save(ms, ImageFormat.Jpeg);
                             byte[] bytes = ms.GetBuffer();
-                            comm.Parameters.Add("@CityID", SqlDbType.Int).Value = this.comboBox1.SelectedIndex;
+                            comm.Parameters.Add("@CityID", SqlDbType.Int).Value = returnCityID(comboBox1.Text);
                             comm.Parameters.Add("@Photo", SqlDbType.Image).Value = bytes;
 
                             comm.ExecuteNonQuery();
                         }
                     }
+
+                    this.photoTableAdapter.Update(this.homework6DataSet);
+
                 }
                 catch (Exception ex)
                 {
@@ -250,36 +258,15 @@ namespace MyHW
             }
         }
 
-        private void cityBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.cityBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.hW6DataSet);
 
-        }
-
-        private void FrmMyAlbum_V1_Load(object sender, EventArgs e)
-        {
-            // TODO: 這行程式碼會將資料載入 'hW6DataSet.Photo' 資料表。您可以視需要進行移動或移除。
-            this.photoTableAdapter.Fill(this.hW6DataSet.Photo);
-            // TODO: 這行程式碼會將資料載入 'hW6DataSet.City' 資料表。您可以視需要進行移動或移除。
-            this.cityTableAdapter.Fill(this.hW6DataSet.City);
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult result = this.openFileDialog1.ShowDialog();
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 this.photoPictureBox.Image = Image.FromFile(this.openFileDialog1.FileName);
             }
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.cityBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.hW6DataSet);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -291,7 +278,7 @@ namespace MyHW
                 {
                     flowLayoutPanel1.Controls.Clear();
                     SqlCommand comm = new SqlCommand();
-                    comm.CommandText = $"select * from Photo where CityID = {comboBox1.SelectedIndex}";
+                    comm.CommandText = $"select * from Photo where CityID = {returnCityID(comboBox1.Text)}";
                     comm.Connection = conn;
                     conn.Open();
 
@@ -319,5 +306,97 @@ namespace MyHW
                 MessageBox.Show(ex.Message);
             }
         }
+
+
+
+        private int returnCityID(string City)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Settings.Default.HW6ConnectionString))
+                {
+                    SqlCommand comm = new SqlCommand();
+                    comm.CommandText = "select CityID from City where CityName = @CityName";
+                    comm.Connection = conn;
+                    comm.Parameters.Add("@CityName", SqlDbType.NVarChar).Value = City;
+                    conn.Open();
+                    SqlDataReader dataReader = comm.ExecuteReader();
+                    dataReader.Read();
+                    return (int)dataReader["CityID"];
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.photoTableAdapter.Update(this.homework6DataSet.Photo);
+                this.photoBindingSource.EndEdit();
+
+                this.photoTableAdapter.FillByCityID(this.homework6DataSet.Photo, returnCityID(cityNameTextBox.Text));
+                //this.tableAdapterManager.UpdateAll(this.homework6DataSet);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        private void FrmMyAlbum_V1_Load(object sender, EventArgs e)
+        {
+            // TODO: 這行程式碼會將資料載入 'homework6DataSet.Photo' 資料表。您可以視需要進行移動或移除。
+            this.photoTableAdapter.Fill(this.homework6DataSet.Photo);
+
+            // TODO: 這行程式碼會將資料載入 'homework6DataSet.Photo' 資料表。您可以視需要進行移動或移除。
+            this.photoTableAdapter.Fill(this.homework6DataSet.Photo);
+            // TODO: 這行程式碼會將資料載入 'homework6DataSet.City' 資料表。您可以視需要進行移動或移除。
+            this.cityTableAdapter.Fill(this.homework6DataSet.City);
+
+        }
+
+        private void cityBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.cityBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.homework6DataSet);
+        }
+
+        private void cityBindingSource_CurrentChanged_1(object sender, EventArgs e)
+        {
+            this.photoTableAdapter.FillByCityID(this.homework6DataSet.Photo, returnCityID(cityNameTextBox.Text));
+        }
+
+
+
+        private void photoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+                this.Validate();
+                this.photoBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.homework6DataSet);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+
+        }
+
+        private void cityBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.cityBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.homework6DataSet);
+        }
     }
-}
+    }
+

@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -125,15 +125,16 @@
     <Compile Include="FrmHomePage.Designer.cs">
       <DependentUpon>FrmHomePage.cs</DependentUpon>
     </Compile>
-    <Compile Include="HW6.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HW6.xsd</DependentUpon>
+    <Compile Include="FrmTreeView.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HW6DataSet.Designer.cs">
+    <Compile Include="FrmTreeView.Designer.cs">
+      <DependentUpon>FrmTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="homework6DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HW6DataSet.xsd</DependentUpon>
+      <DependentUpon>homework6DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="nwDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -169,6 +170,9 @@
     <EmbeddedResource Include="FrmHomePage.resx">
       <DependentUpon>FrmHomePage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmTreeView.resx">
+      <DependentUpon>FrmTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -190,27 +194,16 @@
     <None Include="AWDataSet.xss">
       <DependentUpon>AWDataSet.xsd</DependentUpon>
     </None>
-    <None Include="HW6.xsc">
-      <DependentUpon>HW6.xsd</DependentUpon>
+    <None Include="homework6DataSet.xsc">
+      <DependentUpon>homework6DataSet.xsd</DependentUpon>
     </None>
-    <None Include="HW6.xsd">
+    <None Include="homework6DataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HW6.Designer.cs</LastGenOutput>
+      <LastGenOutput>homework6DataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="HW6.xss">
-      <DependentUpon>HW6.xsd</DependentUpon>
-    </None>
-    <None Include="HW6DataSet.xsc">
-      <DependentUpon>HW6DataSet.xsd</DependentUpon>
-    </None>
-    <None Include="HW6DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>HW6DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="HW6DataSet.xss">
-      <DependentUpon>HW6DataSet.xsd</DependentUpon>
+    <None Include="homework6DataSet.xss">
+      <DependentUpon>homework6DataSet.xsd</DependentUpon>
     </None>
     <None Include="nwDataSet.xsc">
       <DependentUpon>nwDataSet.xsd</DependentUpon>

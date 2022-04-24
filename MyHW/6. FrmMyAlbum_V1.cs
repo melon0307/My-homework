@@ -37,5 +37,20 @@ namespace MyHW
             this.photoTableAdapter1.FillByCityID(this.hW61.Photo, (int)x.Tag);
             this.dataGridView1.DataSource = this.hW61.Photo;
         }
+
+        private void cityBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.cityBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.homework6DataSet);
+
+        }
+
+        private void FrmMyAlbum_V1_Load(object sender, EventArgs e)
+        {
+            // TODO: 這行程式碼會將資料載入 'homework6DataSet.City' 資料表。您可以視需要進行移動或移除。
+            this.cityTableAdapter.Fill(this.homework6DataSet.City);
+
+        }
     }
 }
