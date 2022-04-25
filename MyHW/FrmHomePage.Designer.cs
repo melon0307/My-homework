@@ -39,6 +39,7 @@ namespace MyHW
             this.btnFrmProduct = new System.Windows.Forms.Button();
             this.btnFrmCategoryProducts = new System.Windows.Forms.Button();
             this.btnPractice = new System.Windows.Forms.Button();
+            this.buttonFrmTreeView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -92,6 +93,7 @@ namespace MyHW
             this.splitContainer2.Panel1.AutoScroll = true;
             this.splitContainer2.Panel1.BackgroundImage = global::MyHW.Properties.Resources._50944917162_1305d2f85e_c;
             this.splitContainer2.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.splitContainer2.Panel1.Controls.Add(this.buttonFrmTreeView);
             this.splitContainer2.Panel1.Controls.Add(this.btnLogonCustomers);
             this.splitContainer2.Panel1.Controls.Add(this.btnFrmMyAlbumV2);
             this.splitContainer2.Panel1.Controls.Add(this.btnFrmAdventureWorks);
@@ -114,7 +116,7 @@ namespace MyHW
             this.btnLogonCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogonCustomers.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnLogonCustomers.Location = new System.Drawing.Point(12, 510);
+            this.btnLogonCustomers.Location = new System.Drawing.Point(12, 451);
             this.btnLogonCustomers.Name = "btnLogonCustomers";
             this.btnLogonCustomers.Size = new System.Drawing.Size(225, 32);
             this.btnLogonCustomers.TabIndex = 6;
@@ -127,7 +129,7 @@ namespace MyHW
             this.btnFrmMyAlbumV2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFrmMyAlbumV2.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnFrmMyAlbumV2.Location = new System.Drawing.Point(12, 433);
+            this.btnFrmMyAlbumV2.Location = new System.Drawing.Point(12, 381);
             this.btnFrmMyAlbumV2.Name = "btnFrmMyAlbumV2";
             this.btnFrmMyAlbumV2.Size = new System.Drawing.Size(225, 32);
             this.btnFrmMyAlbumV2.TabIndex = 5;
@@ -140,7 +142,7 @@ namespace MyHW
             this.btnFrmAdventureWorks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFrmAdventureWorks.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnFrmAdventureWorks.Location = new System.Drawing.Point(12, 356);
+            this.btnFrmAdventureWorks.Location = new System.Drawing.Point(12, 311);
             this.btnFrmAdventureWorks.Name = "btnFrmAdventureWorks";
             this.btnFrmAdventureWorks.Size = new System.Drawing.Size(225, 32);
             this.btnFrmAdventureWorks.TabIndex = 4;
@@ -153,7 +155,7 @@ namespace MyHW
             this.btnFrmDataSet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFrmDataSet.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnFrmDataSet.Location = new System.Drawing.Point(12, 279);
+            this.btnFrmDataSet.Location = new System.Drawing.Point(12, 241);
             this.btnFrmDataSet.Name = "btnFrmDataSet";
             this.btnFrmDataSet.Size = new System.Drawing.Size(225, 32);
             this.btnFrmDataSet.TabIndex = 3;
@@ -166,7 +168,7 @@ namespace MyHW
             this.btnFrmProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFrmProduct.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnFrmProduct.Location = new System.Drawing.Point(12, 202);
+            this.btnFrmProduct.Location = new System.Drawing.Point(12, 171);
             this.btnFrmProduct.Name = "btnFrmProduct";
             this.btnFrmProduct.Size = new System.Drawing.Size(225, 32);
             this.btnFrmProduct.TabIndex = 2;
@@ -179,7 +181,7 @@ namespace MyHW
             this.btnFrmCategoryProducts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFrmCategoryProducts.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnFrmCategoryProducts.Location = new System.Drawing.Point(12, 125);
+            this.btnFrmCategoryProducts.Location = new System.Drawing.Point(12, 101);
             this.btnFrmCategoryProducts.Name = "btnFrmCategoryProducts";
             this.btnFrmCategoryProducts.Size = new System.Drawing.Size(225, 32);
             this.btnFrmCategoryProducts.TabIndex = 1;
@@ -192,13 +194,26 @@ namespace MyHW
             this.btnPractice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPractice.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnPractice.Location = new System.Drawing.Point(12, 48);
+            this.btnPractice.Location = new System.Drawing.Point(11, 31);
             this.btnPractice.Name = "btnPractice";
             this.btnPractice.Size = new System.Drawing.Size(225, 32);
             this.btnPractice.TabIndex = 0;
             this.btnPractice.Text = "1. Frm標準練習";
             this.btnPractice.UseVisualStyleBackColor = true;
             this.btnPractice.Click += new System.EventHandler(this.btnPractice_Click);
+            // 
+            // buttonFrmTreeView
+            // 
+            this.buttonFrmTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonFrmTreeView.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.buttonFrmTreeView.Location = new System.Drawing.Point(11, 521);
+            this.buttonFrmTreeView.Name = "buttonFrmTreeView";
+            this.buttonFrmTreeView.Size = new System.Drawing.Size(225, 32);
+            this.buttonFrmTreeView.TabIndex = 7;
+            this.buttonFrmTreeView.Text = "Quiz_ FrmTreeView";
+            this.buttonFrmTreeView.UseVisualStyleBackColor = true;
+            this.buttonFrmTreeView.Click += new System.EventHandler(this.buttonFrmTreeView_Click);
             // 
             // FrmHomePage
             // 
@@ -232,5 +247,6 @@ namespace MyHW
         private System.Windows.Forms.Button btnFrmDataSet;
         private System.Windows.Forms.Button btnFrmProduct;
         private System.Windows.Forms.Button btnFrmCategoryProducts;
+        private System.Windows.Forms.Button buttonFrmTreeView;
     }
 }

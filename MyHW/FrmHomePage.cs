@@ -81,5 +81,14 @@ namespace MyHW
             f.Visible = true;
             this.splitContainer2.Panel2.Controls.Add(f);
         }
+
+        private void buttonFrmTreeView_Click(object sender, EventArgs e)
+        {
+            splitContainer2.Panel2.Controls.Clear();
+            FrmTreeView f = new FrmTreeView();
+            f.TopLevel = false;
+            f.Visible = true;
+            this.splitContainer2.Panel2.Controls.Add(f);
+        }
     }
 }
