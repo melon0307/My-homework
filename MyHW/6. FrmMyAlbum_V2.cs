@@ -340,7 +340,7 @@ namespace MyHW
                 this.photoBindingSource.EndEdit();
 
                 this.photoTableAdapter.FillByCityID(this.homework6DataSet.Photo, returnCityID(cityNameTextBox.Text));
-                //this.tableAdapterManager.UpdateAll(this.homework6DataSet);
+                this.tableAdapterManager.UpdateAll(this.homework6DataSet);
 
             }
             catch (Exception ex)
@@ -354,9 +354,11 @@ namespace MyHW
         {
             // TODO: 這行程式碼會將資料載入 'homework6DataSet.Photo' 資料表。您可以視需要進行移動或移除。
             this.photoTableAdapter.Fill(this.homework6DataSet.Photo);
+            // TODO: 這行程式碼會將資料載入 'homework6DataSet.Photo' 資料表。您可以視需要進行移動或移除。
+            //this.photoTableAdapter.Fill(this.homework6DataSet.Photo);
 
             // TODO: 這行程式碼會將資料載入 'homework6DataSet.Photo' 資料表。您可以視需要進行移動或移除。
-            this.photoTableAdapter.Fill(this.homework6DataSet.Photo);
+            //this.photoTableAdapter.Fill(this.homework6DataSet.Photo);
             // TODO: 這行程式碼會將資料載入 'homework6DataSet.City' 資料表。您可以視需要進行移動或移除。
             this.cityTableAdapter.Fill(this.homework6DataSet.City);
 
@@ -376,26 +378,20 @@ namespace MyHW
 
 
 
-        private void photoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-                this.Validate();
-                this.photoBindingSource.EndEdit();
-                this.tableAdapterManager.UpdateAll(this.homework6DataSet);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-
-        }
-
         private void cityBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.cityBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.homework6DataSet);
+        }
+
+
+        private void toolStripButton13_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.photoTableAdapter.Update(this.homework6DataSet.Photo);
+            this.photoBindingSource.EndEdit();
+            this.photoTableAdapter.FillByCityID(this.homework6DataSet.Photo, returnCityID(cityNameTextBox.Text));
         }
     }
     }

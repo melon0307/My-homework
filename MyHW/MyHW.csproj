@@ -131,6 +131,9 @@
     <Compile Include="FrmTreeView.Designer.cs">
       <DependentUpon>FrmTreeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="homework6DataSet.cs">
+      <DependentUpon>homework6DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="homework6DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
