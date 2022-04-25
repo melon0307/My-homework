@@ -245,6 +245,21 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\Image\Paris\10279599073_b59c95b91c_k.jpg" />
+    <Content Include="bin\Debug\Image\Paris\12452069665_d9122de142_b.jpg" />
+    <Content Include="bin\Debug\Image\Paris\42116290222_58fb832eca_k.jpg" />
+    <Content Include="bin\Debug\Image\Paris\5319364673_57d50fa298_b.jpg" />
+    <Content Include="bin\Debug\Image\Paris\6094164096_cb31df4ed7_k.jpg" />
+    <Content Include="bin\Debug\Image\Taipei\1554574649943_92726200_l.jpg" />
+    <Content Include="bin\Debug\Image\Taipei\1598952901342_大屯山.jpg" />
+    <Content Include="bin\Debug\Image\Taipei\1598952905532_小油坑.jpg" />
+    <Content Include="bin\Debug\Image\Taipei\4029080520130300.jpg" />
+    <Content Include="bin\Debug\Image\Taipei\47675419072_f92c032da4_k.jpg" />
+    <Content Include="bin\Debug\Image\Tokyo\17025277650_947eca1a04_k.jpg" />
+    <Content Include="bin\Debug\Image\Tokyo\2491680523_8be5b3a870_b.jpg" />
+    <Content Include="bin\Debug\Image\Tokyo\31782067015_aea8ef257c_k.jpg" />
+    <Content Include="bin\Debug\Image\Tokyo\50902074261_c29aeed773_k.jpg" />
+    <Content Include="bin\Debug\Image\Tokyo\Hakone.jpg" />
     <Content Include="HW6.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
